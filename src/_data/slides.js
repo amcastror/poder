@@ -28,6 +28,7 @@ export default [
         text: "La defensa no esta en acumular features, sino en controlar workflows criticos, contexto propietario y confianza operativa dificil de replicar."
       }
     ],
+    image: "/assets/img/slide-02.png",
     theme: "threat"
   },
   {
@@ -52,7 +53,7 @@ export default [
         text: "ROI duro y demostrable en menos de 90 dias."
       }
     ],
-    image: "/assets/img/slide-02.png",
+    image: "/assets/img/slide-03.png",
     imageAlt: "Cuatro pilares oscuros conectados por una ruta naranja de evaluacion.",
     theme: "variables"
   },
@@ -67,7 +68,7 @@ export default [
       ["E", "Economia", "¿El pricing se alinea al resultado y no solo al uso?"],
       ["R", "Riesgo y ritmo", "¿Automatiza con control y aprende rapido?"]
     ],
-    image: "/assets/img/slide-03.png",
+    image: "/assets/img/slide-04.png",
     imageAlt: "Cinco nodos estrategicos conectados por una arquitectura de decision.",
     theme: "framework"
   },
@@ -79,7 +80,7 @@ export default [
       before: "Software para que humanos escriban, clasifiquen y cierren tickets.",
       after: "Sistema que resuelve el 80% de los casos con historial, permisos y reglas de la empresa, cobrando por ticket resuelto."
     },
-    image: "/assets/img/slide-04.png",
+    image: "/assets/img/slide-05.png",
     imageAlt: "Flujo operacional oscuro que transforma trabajo pendiente en resultados resueltos.",
     theme: "example"
   },
@@ -89,7 +90,7 @@ export default [
     lead: "La defensa es controlar un workflow critico y sostener una capa de confianza dificil de replicar.",
     body: "Evalua cada iniciativa con PODER. Si suma 4 o 5 puntos, es prioridad. Si suma menos de 2, abandonala antes de que el mercado la convierta en commodity.",
     signal: "No compitas por mas pantallas. Compite por el resultado.",
-    image: "/assets/img/slide-05.png",
+    image: "/assets/img/slide-06.png",
     imageAlt: "Nucleo operacional protegido por anillos de confianza y una ruta naranja controlada.",
     theme: "action"
   }
