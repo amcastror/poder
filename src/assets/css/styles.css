@@ -122,6 +122,15 @@ a {
   max-width: 50rem;
 }
 
+.slide__grid--solo {
+  grid-template-columns: minmax(0, 58rem);
+  justify-content: start;
+}
+
+.slide__grid--solo .slide__copy {
+  max-width: 58rem;
+}
+
 .eyebrow {
   margin: 0 0 1.2rem;
   color: var(--accent);
@@ -162,6 +171,15 @@ h2 {
   color: var(--muted);
   font-size: clamp(1rem, 1.4vw, 1.12rem);
   line-height: 1.7;
+}
+
+.slide-question {
+  max-width: 38rem;
+  margin: clamp(1.35rem, 3vw, 2rem) 0 0;
+  color: var(--accent);
+  font-size: clamp(1.45rem, 2.5vw, 2.1rem);
+  font-weight: 750;
+  line-height: 1.12;
 }
 
 .signal {

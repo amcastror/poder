@@ -10,6 +10,27 @@ export default [
     theme: "shift"
   },
   {
+    eyebrow: "Amenaza doble",
+    title: "La IA amenaza al SaaS por dos frentes",
+    lead: "El riesgo no es solo que un competidor use IA. Es que la IA reduzca la necesidad de usar el producto tal como existe hoy.",
+    question: "¿Se nos escapa algo?",
+    points: [
+      {
+        label: "Directa",
+        text: "Un agente general puede reemplazar flujos completos: consultar datos, decidir proximos pasos, ejecutar acciones y coordinar tareas entre herramientas."
+      },
+      {
+        label: "Indirecta",
+        text: "La IA baja el costo de construir alternativas. Competidores, equipos internos y clientes pueden crear respuestas propias si el SaaS es caro, rigido o no se adapta."
+      },
+      {
+        label: "Implicancia",
+        text: "La defensa no esta en acumular features, sino en controlar workflows criticos, contexto propietario y confianza operativa dificil de replicar."
+      }
+    ],
+    theme: "threat"
+  },
+  {
     eyebrow: "Variables criticas",
     title: "¿Que define la supervivencia?",
     lead: "La defensa no esta en tener mas features, sino en controlar una parte critica del trabajo real.",

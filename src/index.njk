@@ -7,7 +7,7 @@ description: "Una presentacion web estatica sobre como competir como empresa Saa
 <main class="deck" id="inicio">
   {% for slide in slides %}
     <section class="slide slide--{{ slide.theme }}" id="slide-{{ loop.index }}" aria-labelledby="slide-title-{{ loop.index }}">
-      <div class="slide__grid">
+      <div class="slide__grid{% if not slide.image %} slide__grid--solo{% endif %}">
         <div class="slide__copy reveal">
           <p class="eyebrow">{{ loop.index | pad2 }} / {{ slide.eyebrow }}</p>
           <h1 id="slide-title-{{ loop.index }}">{{ slide.title }}</h1>
@@ -52,11 +52,17 @@ description: "Una presentacion web estatica sobre como competir como empresa Saa
               </div>
             </div>
           {% endif %}
+
+          {% if slide.question %}
+            <p class="slide-question">{{ slide.question }}</p>
+          {% endif %}
         </div>
 
-        <figure class="slide__visual reveal">
-          <img src="{{ slide.image | url }}" alt="{{ slide.imageAlt }}">
-        </figure>
+        {% if slide.image %}
+          <figure class="slide__visual reveal">
+            <img src="{{ slide.image | url }}" alt="{{ slide.imageAlt }}">
+          </figure>
+        {% endif %}
       </div>
     </section>
   {% endfor %}
