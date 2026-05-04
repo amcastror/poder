@@ -23,6 +23,20 @@ nvm use
 npm run build
 ```
 
+## GitHub Pages Publishing
+
+- Build output is generated in `_site`; publish that directory as the GitHub Pages artifact.
+- Prefer GitHub Actions for publishing. Configure the repository Pages source as `GitHub Actions`, then use a workflow that runs `nvm use`, `npm install`, `npm run build`, and uploads `_site`.
+- Keep the workflow static-site only. Do not add server runtimes, backend deploy targets, or secrets unless a future static hosting requirement explicitly needs them.
+- Before publishing changes, run:
+
+```bash
+nvm use
+npm run build
+```
+
+- For a manual GitHub Pages setup, publish from the generated static files only. Do not commit `_site` unless the repository is intentionally configured to deploy from a branch/folder instead of Actions.
+
 ## Project Scope
 
 - This repository is an Eleventy (11ty) static site.
