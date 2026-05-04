@@ -3,6 +3,7 @@ export default function eleventyConfig(config) {
   config.addFilter("pad2", (value) => String(value).padStart(2, "0"));
 
   return {
+    pathPrefix: process.env.ELEVENTY_PATH_PREFIX || "/",
     dir: {
       input: "src",
       output: "_site"
