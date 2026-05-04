@@ -61,3 +61,40 @@ description: "Una presentacion web estatica sobre como competir como empresa Saa
     </section>
   {% endfor %}
 </main>
+
+<section class="references-section" id="referencias" aria-labelledby="references-title">
+  <div class="references-section__inner reveal">
+    <div class="references-section__header">
+      <p class="eyebrow">Fuentes</p>
+      <h2 id="references-title">Referencias</h2>
+      <p>Material base y contexto usado para construir la sintesis de la presentacion.</p>
+    </div>
+
+    <div class="references-list" aria-label="Referencias por seccion">
+      {% for group in references %}
+        <section class="reference-group" aria-labelledby="reference-group-{{ loop.index }}">
+          <h3 id="reference-group-{{ loop.index }}">{{ group.section }}</h3>
+
+          <ul>
+            {% for item in group.items %}
+              <li>
+                <div>
+                  <strong>{{ item.source }}</strong>
+                  <span>{{ item.type }}</span>
+                </div>
+
+                {% if item.link.url %}
+                  <a href="{{ item.link.url }}" rel="noreferrer" target="_blank">{{ item.link.label }}</a>
+                {% else %}
+                  <span>{{ item.link.label }}</span>
+                {% endif %}
+
+                <small>{{ item.contribution }}</small>
+              </li>
+            {% endfor %}
+          </ul>
+        </section>
+      {% endfor %}
+    </div>
+  </div>
+</section>
