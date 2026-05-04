@@ -1,0 +1,14 @@
+{
+  "name": "poder-static-presentation",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static 11ty presentation site for the PODER framework.",
+  "type": "module",
+  "scripts": {
+    "dev": "eleventy --serve",
+    "build": "eleventy"
+  },
+  "devDependencies": {
+    "@11ty/eleventy": "^3.1.2"
+  }
+}

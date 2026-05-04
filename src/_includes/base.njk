@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="{{ description }}">
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/styles.css' | url }}">
+    <script src="{{ '/assets/js/main.js' | url }}" defer></script>
+  </head>
+  <body>
+    <header class="topbar" aria-label="Navegacion de presentacion">
+      <a class="brand" href="#inicio" aria-label="Ir al inicio">PODER</a>
+      <nav class="slide-nav" aria-label="Diapositivas">
+        {% for slide in slides %}
+          <a href="#slide-{{ loop.index }}" aria-label="Ir a diapositiva {{ loop.index }}">{{ loop.index | pad2 }}</a>
+        {% endfor %}
+      </nav>
+    </header>
+    <div class="progress" aria-hidden="true"><span></span></div>
+    {{ content | safe }}
+  </body>
+</html>

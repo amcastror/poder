@@ -1,0 +1,63 @@
+---
+layout: base.njk
+title: "PODER | SaaS en la era de la IA"
+description: "Una presentacion web estatica sobre como competir como empresa SaaS en la era de la IA."
+---
+
+<main class="deck" id="inicio">
+  {% for slide in slides %}
+    <section class="slide slide--{{ slide.theme }}" id="slide-{{ loop.index }}" aria-labelledby="slide-title-{{ loop.index }}">
+      <div class="slide__grid">
+        <div class="slide__copy reveal">
+          <p class="eyebrow">{{ loop.index | pad2 }} / {{ slide.eyebrow }}</p>
+          <h1 id="slide-title-{{ loop.index }}">{{ slide.title }}</h1>
+          <p class="lead">{{ slide.lead }}</p>
+
+          {% if slide.body %}
+            <p class="body-copy">{{ slide.body }}</p>
+          {% endif %}
+
+          {% if slide.signal %}
+            <p class="signal">{{ slide.signal }}</p>
+          {% endif %}
+
+          {% if slide.points %}
+            <ol class="axis-list">
+              {% for point in slide.points %}
+                <li>
+                  <span>{{ point.label }}</span>
+                  <small>{{ point.text }}</small>
+                </li>
+              {% endfor %}
+            </ol>
+          {% elif slide.framework %}
+            <div class="poder-map">
+              {% for item in slide.framework %}
+                <div class="poder-row">
+                  <strong>{{ item[0] }}</strong>
+                  <span>{{ item[1] }}</span>
+                  <small>{{ item[2] }}</small>
+                </div>
+              {% endfor %}
+            </div>
+          {% elif slide.contrast %}
+            <div class="before-after">
+              <div>
+                <span>Antes</span>
+                <p>{{ slide.contrast.before }}</p>
+              </div>
+              <div>
+                <span>Despues</span>
+                <p>{{ slide.contrast.after }}</p>
+              </div>
+            </div>
+          {% endif %}
+        </div>
+
+        <figure class="slide__visual reveal">
+          <img src="{{ slide.image | url }}" alt="{{ slide.imageAlt }}">
+        </figure>
+      </div>
+    </section>
+  {% endfor %}
+</main>
