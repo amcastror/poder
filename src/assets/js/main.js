@@ -2,6 +2,38 @@ const progress = document.querySelector(".progress span");
 const sections = [...document.querySelectorAll(".slide")];
 const navLinks = [...document.querySelectorAll(".slide-nav a")];
 const reveals = [...document.querySelectorAll(".reveal")];
+const themeToggle = document.querySelector(".theme-toggle");
+const themeColor = document.querySelector('meta[name="theme-color"]');
+const themeStorageKey = "poder-theme";
+
+function setTheme(theme) {
+  const safeTheme = theme === "light" ? "light" : "dark";
+  document.documentElement.dataset.theme = safeTheme;
+
+  if (themeToggle) {
+    const isLight = safeTheme === "light";
+    themeToggle.setAttribute("aria-pressed", String(isLight));
+    themeToggle.setAttribute("aria-label", isLight ? "Cambiar a modo oscuro" : "Cambiar a modo claro");
+  }
+
+  if (themeColor) {
+    themeColor.setAttribute("content", safeTheme === "light" ? "#f7f3ec" : "#050505");
+  }
+}
+
+function getStoredTheme() {
+  try {
+    return localStorage.getItem(themeStorageKey);
+  } catch (error) {
+    return null;
+  }
+}
+
+function storeTheme(theme) {
+  try {
+    localStorage.setItem(themeStorageKey, theme);
+  } catch (error) {}
+}
 
 function updateProgress() {
   const max = document.documentElement.scrollHeight - window.innerHeight;
@@ -43,6 +75,14 @@ const sectionObserver = new IntersectionObserver(
 for (const section of sections) {
   sectionObserver.observe(section);
 }
+
+setTheme(getStoredTheme() || document.documentElement.dataset.theme);
+
+themeToggle?.addEventListener("click", () => {
+  const nextTheme = document.documentElement.dataset.theme === "light" ? "dark" : "light";
+  setTheme(nextTheme);
+  storeTheme(nextTheme);
+});
 
 window.addEventListener("scroll", updateProgress, { passive: true });
 window.addEventListener("resize", updateProgress);

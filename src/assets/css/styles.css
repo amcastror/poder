@@ -1,13 +1,39 @@
 :root {
   --bg: #050505;
+  --bg-mid: #111111;
+  --bg-rgb: 5, 5, 5;
   --panel: #111111;
   --ink: #ffffff;
+  --lead: #ededed;
   --muted: #b8b8b8;
   --subtle: #6f6f6f;
   --line: rgba(255, 255, 255, 0.15);
+  --line-soft: rgba(255, 255, 255, 0.08);
+  --nav-hover: rgba(255, 255, 255, 0.05);
+  --progress-track: rgba(255, 255, 255, 0.08);
+  --image-filter: grayscale(0.12) contrast(1.05);
   --accent: rgb(236, 129, 18);
+  --accent-wash: rgba(236, 129, 18, 0.1);
   --max: 1180px;
   color-scheme: dark;
+}
+
+html[data-theme="light"] {
+  --bg: #f7f3ec;
+  --bg-mid: #ece5da;
+  --bg-rgb: 247, 243, 236;
+  --panel: #fffaf2;
+  --ink: #17130f;
+  --lead: #332a22;
+  --muted: #665d54;
+  --subtle: #8e8174;
+  --line: rgba(23, 19, 15, 0.16);
+  --line-soft: rgba(23, 19, 15, 0.09);
+  --nav-hover: rgba(23, 19, 15, 0.055);
+  --progress-track: rgba(23, 19, 15, 0.1);
+  --image-filter: grayscale(0.05) contrast(1.02) saturate(0.95);
+  --accent-wash: rgba(236, 129, 18, 0.15);
+  color-scheme: light;
 }
 
 * {
@@ -21,11 +47,12 @@ html {
 body {
   margin: 0;
   background:
-    radial-gradient(circle at 82% 8%, rgba(236, 129, 18, 0.1), transparent 24rem),
-    linear-gradient(180deg, #050505 0%, #111111 48%, #050505 100%);
+    radial-gradient(circle at 82% 8%, var(--accent-wash), transparent 24rem),
+    linear-gradient(180deg, var(--bg) 0%, var(--bg-mid) 48%, var(--bg) 100%);
   color: var(--ink);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   letter-spacing: 0;
+  transition: background-color 220ms ease, color 220ms ease;
 }
 
 a {
@@ -41,12 +68,13 @@ a {
   justify-content: space-between;
   gap: 1rem;
   padding: 1.15rem clamp(1rem, 4vw, 3rem);
-  background: linear-gradient(180deg, rgba(5, 5, 5, 0.9), rgba(5, 5, 5, 0));
+  background: linear-gradient(180deg, rgba(var(--bg-rgb), 0.9), rgba(var(--bg-rgb), 0));
   pointer-events: none;
 }
 
 .brand,
-.slide-nav a {
+.slide-nav a,
+.theme-toggle {
   pointer-events: auto;
   text-decoration: none;
 }
@@ -55,6 +83,58 @@ a {
   font-size: 0.86rem;
   font-weight: 800;
   letter-spacing: 0.18em;
+}
+
+.topbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.theme-toggle {
+  display: inline-grid;
+  place-items: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: rgba(var(--bg-rgb), 0.42);
+  color: var(--muted);
+  font: inherit;
+  cursor: pointer;
+  transition: border-color 180ms ease, color 180ms ease, background 180ms ease;
+}
+
+.theme-toggle:hover {
+  background: var(--nav-hover);
+  color: var(--ink);
+}
+
+.theme-toggle__icon {
+  grid-area: 1 / 1;
+  width: 1rem;
+  height: 1rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 2;
+  transition: opacity 180ms ease, transform 180ms ease;
+}
+
+.theme-toggle__icon--moon {
+  opacity: 0;
+  transform: rotate(-18deg) scale(0.72);
+}
+
+html[data-theme="light"] .theme-toggle__icon--sun {
+  opacity: 0;
+  transform: rotate(18deg) scale(0.72);
+}
+
+html[data-theme="light"] .theme-toggle__icon--moon {
+  opacity: 1;
+  transform: rotate(0) scale(1);
 }
 
 .slide-nav {
@@ -77,7 +157,7 @@ a {
 .slide-nav a:hover,
 .slide-nav a.is-active {
   border-color: var(--line);
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--nav-hover);
   color: var(--ink);
 }
 
@@ -86,7 +166,7 @@ a {
   inset: auto 0 0;
   z-index: 30;
   height: 3px;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--progress-track);
 }
 
 .progress span {
@@ -105,7 +185,7 @@ a {
   display: grid;
   align-items: center;
   padding: 6.5rem clamp(1rem, 5vw, 4rem) 4rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  border-bottom: 1px solid var(--line-soft);
   scroll-snap-align: start;
 }
 
@@ -159,7 +239,7 @@ h2 {
 .lead {
   max-width: 42rem;
   margin: 1.2rem 0 0;
-  color: #ededed;
+  color: var(--lead);
   font-size: clamp(1.18rem, 2vw, 1.55rem);
   line-height: 1.38;
 }
@@ -201,7 +281,7 @@ h2 {
   aspect-ratio: 16 / 10;
   object-fit: cover;
   border: 1px solid var(--line);
-  filter: grayscale(0.12) contrast(1.05);
+  filter: var(--image-filter);
 }
 
 .axis-list,
@@ -278,7 +358,7 @@ h2 {
 
 .references-section {
   padding: 6.5rem clamp(1rem, 5vw, 4rem) 5.5rem;
-  background: #050505;
+  background: var(--bg);
 }
 
 .references-section__inner {
@@ -335,7 +415,7 @@ h2 {
   gap: clamp(0.9rem, 2vw, 1.5rem);
   align-items: start;
   padding: 1rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-top: 1px solid var(--line-soft);
 }
 
 .reference-group li:first-child {
@@ -386,7 +466,7 @@ h2 {
 }
 
 .reference-group small {
-  color: #d7d7d7;
+  color: var(--lead);
   font-size: 0.92rem;
   line-height: 1.45;
 }
@@ -405,6 +485,20 @@ h2 {
 @media (max-width: 860px) {
   .topbar {
     padding: 0.8rem 1rem;
+  }
+
+  .topbar__actions {
+    gap: 0.5rem;
+  }
+
+  .theme-toggle {
+    width: 1.9rem;
+    height: 1.9rem;
+  }
+
+  .theme-toggle__icon {
+    width: 0.92rem;
+    height: 0.92rem;
   }
 
   .slide-nav {

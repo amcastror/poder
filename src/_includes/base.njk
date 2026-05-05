@@ -1,21 +1,50 @@
 <!doctype html>
-<html lang="es">
+<html lang="es" data-theme="dark">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ description }}">
+    <meta name="theme-color" content="#050505">
     <title>{{ title }}</title>
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem("poder-theme");
+          if (theme === "light" || theme === "dark") {
+            document.documentElement.dataset.theme = theme;
+          }
+        } catch (error) {}
+      })();
+    </script>
     <link rel="stylesheet" href="{{ '/assets/css/styles.css' | url }}">
     <script src="{{ '/assets/js/main.js' | url }}" defer></script>
   </head>
   <body>
     <header class="topbar" aria-label="Navegacion de presentacion">
       <a class="brand" href="#inicio" aria-label="Ir al inicio">PODER</a>
-      <nav class="slide-nav" aria-label="Diapositivas">
-        {% for slide in slides %}
-          <a href="#slide-{{ loop.index }}" aria-label="Ir a diapositiva {{ loop.index0 | pad2 }}">{{ loop.index0 | pad2 }}</a>
-        {% endfor %}
-      </nav>
+      <div class="topbar__actions">
+        <button class="theme-toggle" type="button" aria-label="Cambiar a modo claro" aria-pressed="false">
+          <svg class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="4"></circle>
+            <path d="M12 2v2"></path>
+            <path d="M12 20v2"></path>
+            <path d="m4.93 4.93 1.41 1.41"></path>
+            <path d="m17.66 17.66 1.41 1.41"></path>
+            <path d="M2 12h2"></path>
+            <path d="M20 12h2"></path>
+            <path d="m6.34 17.66-1.41 1.41"></path>
+            <path d="m19.07 4.93-1.41 1.41"></path>
+          </svg>
+          <svg class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true" viewBox="0 0 24 24">
+            <path d="M20.99 12.53A8.5 8.5 0 1 1 11.47 3.01 6.5 6.5 0 0 0 20.99 12.53Z"></path>
+          </svg>
+        </button>
+        <nav class="slide-nav" aria-label="Diapositivas">
+          {% for slide in slides %}
+            <a href="#slide-{{ loop.index }}" aria-label="Ir a diapositiva {{ loop.index0 | pad2 }}">{{ loop.index0 | pad2 }}</a>
+          {% endfor %}
+        </nav>
+      </div>
     </header>
     <div class="progress" aria-hidden="true"><span></span></div>
     {{ content | safe }}
