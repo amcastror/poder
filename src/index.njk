@@ -9,7 +9,7 @@ description: "Una presentacion web estatica sobre como competir como empresa Saa
     <section class="slide slide--{{ slide.theme }}" id="slide-{{ loop.index }}" aria-labelledby="slide-title-{{ loop.index }}">
       <div class="slide__grid{% if not slide.image %} slide__grid--solo{% endif %}">
         <div class="slide__copy reveal">
-          <p class="eyebrow">{{ loop.index | pad2 }} / {{ slide.eyebrow }}</p>
+          <p class="eyebrow">{{ loop.index0 | pad2 }} / {{ slide.eyebrow }}</p>
           <h1 id="slide-title-{{ loop.index }}">{{ slide.title }}</h1>
           <p class="lead">{{ slide.lead }}</p>
 

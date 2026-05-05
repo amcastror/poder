@@ -13,7 +13,7 @@
       <a class="brand" href="#inicio" aria-label="Ir al inicio">PODER</a>
       <nav class="slide-nav" aria-label="Diapositivas">
         {% for slide in slides %}
-          <a href="#slide-{{ loop.index }}" aria-label="Ir a diapositiva {{ loop.index }}">{{ loop.index | pad2 }}</a>
+          <a href="#slide-{{ loop.index }}" aria-label="Ir a diapositiva {{ loop.index0 | pad2 }}">{{ loop.index0 | pad2 }}</a>
         {% endfor %}
       </nav>
     </header>

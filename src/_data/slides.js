@@ -1,5 +1,30 @@
 export default [
   {
+    eyebrow: "Contexto inicial",
+    title: "Autoventa",
+    lead: "Una plataforma integral para digitalizar la operacion comercial de distribuidoras: pedidos, facturacion, despachos y cobranza en un solo lugar.",
+    body: "Conecta el trabajo en terreno con la gestion de oficina, dando control en tiempo real sobre precios, stock, clientes, rutas y pagos.",
+    points: [
+      {
+        label: "Plataforma integral de ventas",
+        text: "Ordena el proceso comercial completo desde la toma de pedidos hasta la cobranza."
+      },
+      {
+        label: "Terreno y oficina conectados",
+        text: "Los vendedores registran pedidos en una app y la oficina gestiona facturacion, logistica y seguimiento."
+      },
+      {
+        label: "Control en tiempo real",
+        text: "Centraliza precios, stock, clientes, rutas y pagos para reducir errores y decidir mejor."
+      },
+      {
+        label: "Canal tradicional",
+        text: "Pensado para mayoristas, distribuidores y productores con operaciones complejas de venta en terreno."
+      }
+    ],
+    theme: "intro"
+  },
+  {
     eyebrow: "Hipotesis",
     title: "¿El fin del SaaS tal como lo conocemos?",
     lead: "El valor se esta desplazando desde las pantallas hacia la capa que entiende contexto, decide y ejecuta trabajo.",
