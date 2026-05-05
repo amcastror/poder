@@ -59,8 +59,13 @@ description: "Una presentacion web estatica sobre como competir como empresa Saa
         </div>
 
         {% if slide.image %}
-          <figure class="slide__visual reveal">
-            <img src="{{ slide.image | url }}" alt="{{ slide.imageAlt }}">
+          <figure class="slide__visual{% if slide.imageType %} slide__visual--{{ slide.imageType }}{% endif %} reveal">
+            {% if slide.image.light and slide.image.dark %}
+              <img class="theme-image theme-image--light" src="{{ slide.image.light | url }}" alt="{{ slide.imageAlt }}">
+              <img class="theme-image theme-image--dark" src="{{ slide.image.dark | url }}" alt="{{ slide.imageAlt }}">
+            {% else %}
+              <img src="{{ slide.image | url }}" alt="{{ slide.imageAlt }}">
+            {% endif %}
           </figure>
         {% endif %}
       </div>

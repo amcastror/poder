@@ -284,6 +284,30 @@ h2 {
   filter: var(--image-filter);
 }
 
+.slide__visual--logo {
+  justify-items: center;
+}
+
+.slide__visual--logo img {
+  max-width: min(100%, 25rem);
+  aspect-ratio: auto;
+  object-fit: contain;
+  border: 0;
+  filter: none;
+}
+
+.slide__visual .theme-image--light {
+  display: none;
+}
+
+html[data-theme="light"] .slide__visual .theme-image--light {
+  display: block;
+}
+
+html[data-theme="light"] .slide__visual .theme-image--dark {
+  display: none;
+}
+
 .axis-list,
 .poder-map {
   margin: 0;

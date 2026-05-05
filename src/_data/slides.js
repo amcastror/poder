@@ -22,6 +22,9 @@ export default [
         text: "Pensado para mayoristas, distribuidores y productores con operaciones complejas de venta en terreno."
       }
     ],
+    image: "/assets/img/logo_autoventa.jpg",
+    imageAlt: "Autoventa",
+    imageType: "logo",
     theme: "intro"
   },
   {
